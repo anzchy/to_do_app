@@ -1,0 +1,42 @@
+[project]
+name = "todo-api"
+version = "0.1.0"
+description = "Web API and interface for todo application"
+authors = [
+    {name = "Todo Team", email = "todo@example.com"},
+]
+dependencies = [
+    "todo-core>=0.1.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "jinja2>=3.1.0",
+    "python-multipart>=0.0.6",
+]
+requires-python = ">=3.11"
+
+[project.scripts]
+todo-api = "todo_api.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "--strict-markers --cov=todo_api"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
