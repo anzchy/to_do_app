@@ -1,0 +1,41 @@
+[project]
+name = "todo-core"
+version = "0.1.0"
+description = "Core library for todo application"
+authors = [
+    {name = "Todo Team", email = "todo@example.com"},
+]
+dependencies = [
+    "sqlalchemy>=2.0.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+]
+requires-python = ">=3.11"
+
+[project.scripts]
+todo-core = "todo_core.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "--strict-markers --cov=todo_core"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
